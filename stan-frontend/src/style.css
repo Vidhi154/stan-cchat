@@ -1,50 +1,118 @@
 body {
-  background: #0f172a;
+  margin: 0;
   font-family: Arial;
+  background: #0f172a;
 }
 
-.chat-container {
-  width: 400px;
-  margin: 40px auto;
+.login-screen {
+  width: 300px;
+  margin: 150px auto;
   background: #020617;
   padding: 20px;
   border-radius: 10px;
   color: white;
+  text-align: center;
 }
 
-.chat-box {
-  height: 350px;
-  overflow-y: auto;
-  margin-bottom: 10px;
+.login-screen input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
 }
 
-.user {
-  background: #2563eb;
-  padding: 8px;
-  margin: 5px;
-  border-radius: 8px;
-  text-align: right;
+.login-screen button {
+  width: 100%;
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
 }
 
-.bot {
-  background: #334155;
-  padding: 8px;
-  margin: 5px;
-  border-radius: 8px;
-  text-align: left;
-}
-
-.input-box {
+.app-layout {
   display: flex;
+  height: 100vh;
 }
 
-input {
+.sidebar {
+  width: 200px;
+  background: #020617;
+  color: white;
+  padding: 10px;
+}
+
+.chat-item {
+  padding: 8px;
+  background: #334155;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.chat-item.active {
+  background: #2563eb;
+}
+
+.new-chat-btn {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #0f172a;
+}
+
+.chat-header {
+  padding: 15px;
+  background: #020617;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+.bubble.user {
+  background: #2563eb;
+  margin-left: auto;
+}
+
+.bubble.bot {
+  background: #334155;
+  margin-right: auto;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: #020617;
+}
+
+.chat-input input {
   flex: 1;
   padding: 10px;
 }
 
-button {
+.chat-input button {
+  padding: 10px 15px;
   background: #22c55e;
   border: none;
-  padding: 10px;
 }
