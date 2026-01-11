@@ -27,7 +27,7 @@ This project demonstrates real-world **Conversational AI system design**, not ju
 
 🎥 Demo
 
-📌 Demo Video: 
+📌 Demo Video: https://drive.google.com/file/d/1QuCCuKnHrdZiIznPIP2e8GPvrWpdvZyY/view?usp=sharing
 
 ---
 
