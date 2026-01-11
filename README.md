@@ -155,7 +155,12 @@ Nova is validated against:
 
 <img width="1566" height="855" alt="image" src="https://github.com/user-attachments/assets/beba3d08-66dd-4fe5-84ba-76e4f42630d9" />
 
+<img width="1909" height="752" alt="image" src="https://github.com/user-attachments/assets/11264f1d-b189-469e-b473-31e2e768596e" />
 
+<img width="1914" height="953" alt="image" src="https://github.com/user-attachments/assets/e3d1495b-0c48-4301-8d83-787d2d5d657d" />
+
+
+<img width="1917" height="947" alt="image" src="https://github.com/user-attachments/assets/591d25e7-23b9-4c74-a4fb-b466e2f35e3f" />
 
 
 
