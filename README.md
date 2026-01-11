@@ -25,6 +25,12 @@ This project demonstrates real-world **Conversational AI system design**, not ju
 
 ---
 
+🎥 Demo
+
+📌 Demo Video: 
+
+---
+
 ## 🚀 Features  
 
 | Feature | Description |
@@ -155,6 +161,7 @@ Frontend Setup
 cd frontend
 npm install
 npm start
+```
 
 Environment Variables
 
@@ -162,16 +169,10 @@ Create .env file in backend:
 
 MONGO_URI=your_mongodb_url
 GEMINI_KEY=your_gemini_api_key
+---
 
-🎥 Demo
 
-📌 Demo Video: (Add your video link here)
+📄 Documentation :
 
-📄 Documentation
 
-Architecture PDF
 
-Implementation Brief
-
-Test Case Validation
-```
