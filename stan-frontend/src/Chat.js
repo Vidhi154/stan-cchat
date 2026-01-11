@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { sendMessage } from "./api";
 import "./style.css";
 
@@ -12,6 +12,16 @@ function Chat() {
   const [chatList, setChatList] = useState([]);
   const [currentChatIndex, setCurrentChatIndex] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
+  const chatEndRef = useRef(null);
+
+  // Auto scroll
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Load user chat history
   useEffect(() => {
     if (userName) {
       const data = localStorage.getItem(userName);
@@ -19,6 +29,7 @@ function Chat() {
     }
   }, [userName]);
 
+  // Save chat history
   useEffect(() => {
     if (userName) {
       localStorage.setItem(userName, JSON.stringify(chatList));
@@ -33,25 +44,53 @@ function Chat() {
   };
 
   const handleSend = async () => {
-    if (!input) return;
+    if (!input.trim() || loading) return;
 
-    const newMsgs = [...messages, { sender: "user", text: input }];
-    setMessages(newMsgs);
-
-    const reply = await sendMessage(userName.toLowerCase(), input);
-
-    const finalMsgs = [...newMsgs, { sender: "bot", text: reply }];
-    setMessages(finalMsgs);
+    const userText = input;
     setInput("");
+    setLoading(true);
 
-    if (currentChatIndex === null) {
-      setChatList([...chatList, finalMsgs]);
-      setCurrentChatIndex(chatList.length);
-    } else {
-      const updated = [...chatList];
-      updated[currentChatIndex] = finalMsgs;
-      setChatList(updated);
+    const newMsgs = [...messages, { sender: "user", text: userText }];
+    setMessages([...newMsgs, { sender: "bot", text: "Nova is typing..." }]);
+
+    try {
+      const res = await sendMessage({
+        userId: userName.toLowerCase(),
+        message: userText
+      });
+
+      let reply = res.reply || "No response";
+
+      reply = reply
+        .replace(/\*\*/g, "")
+        .replace(/\n+/g, "\n")
+        .split("\n")
+        .map(l => l.trim())
+        .filter(l => l)
+        .join("\n");
+
+      const finalMsgs = [...newMsgs, { sender: "bot", text: reply }];
+      setMessages(finalMsgs);
+
+      if (currentChatIndex === null) {
+        setChatList([...chatList, finalMsgs]);
+        setCurrentChatIndex(chatList.length);
+      } else {
+        const updated = [...chatList];
+        updated[currentChatIndex] = finalMsgs;
+        setChatList(updated);
+      }
+
+    } catch (err) {
+      alert("Too many requests. Please wait 1 minute.");
+      setMessages(newMsgs);
     }
+
+    setLoading(false);
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") handleSend();
   };
 
   const newChat = () => {
@@ -64,6 +103,7 @@ function Chat() {
     setCurrentChatIndex(i);
   };
 
+  // ---------- LOGIN SCREEN ----------
   if (!started) {
     return (
       <div className="login-screen">
@@ -78,10 +118,10 @@ function Chat() {
     );
   }
 
+  // ---------- CHAT UI ----------
   return (
     <div className="app-layout">
 
-      {/* Sidebar */}
       <div className="sidebar">
         <h3>{userName}</h3>
 
@@ -98,7 +138,6 @@ function Chat() {
         <button className="new-chat-btn" onClick={newChat}>+ New Chat</button>
       </div>
 
-      {/* Chat Area */}
       <div className="chat-area">
 
         <div className="chat-header">Nova AI</div>
@@ -109,15 +148,21 @@ function Chat() {
               {m.text}
             </div>
           ))}
+
+          <div ref={chatEndRef}></div>
         </div>
 
         <div className="chat-input">
           <input
             value={input}
             onChange={e => setInput(e.target.value)}
+            onKeyDown={handleEnter}
             placeholder="Type a message..."
+            disabled={loading}
           />
-          <button onClick={handleSend}>Send</button>
+          <button onClick={handleSend} disabled={loading}>
+            {loading ? "..." : "Send"}
+          </button>
         </div>
 
       </div>
