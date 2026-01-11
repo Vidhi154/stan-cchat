@@ -145,6 +145,24 @@ Nova is validated against:
 
 ---
 
+📌 Sample Conversation
+
+<img width="1919" height="961" alt="image" src="https://github.com/user-attachments/assets/2f29c31f-5412-4dce-8274-6159ae584343" />
+
+<img width="1507" height="474" alt="image" src="https://github.com/user-attachments/assets/9b09568e-0551-42ff-b8c4-6e5d264781fe" />
+
+<img width="1568" height="693" alt="image" src="https://github.com/user-attachments/assets/eb7f1125-7d3f-48ed-824c-3ead7288cbd8" />
+
+<img width="1566" height="855" alt="image" src="https://github.com/user-attachments/assets/beba3d08-66dd-4fe5-84ba-76e4f42630d9" />
+
+
+
+
+
+
+
+---
+
 ## ⚙️ Setup
 
 ### Clone Repository
