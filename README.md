@@ -186,6 +186,16 @@ npm install
 npm start
 ```
 
+---
+mongodb-
+<img width="1835" height="550" alt="image" src="https://github.com/user-attachments/assets/6f0ea152-594d-48bf-84ae-80612b650e61" />
+
+<img width="1816" height="469" alt="image" src="https://github.com/user-attachments/assets/090fadc5-d9cc-4e49-a4dd-105f9f1a2315" />
+
+<img width="1784" height="494" alt="image" src="https://github.com/user-attachments/assets/6e2e403f-ba37-4159-a0a5-b9f367cb968d" />
+
+---
+
 Environment Variables
 
 Create .env file in backend:
